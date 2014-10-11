@@ -1,0 +1,862 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>Verilog 筆記</title>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['$$$','$$$']]}});</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<h2>Verilog 筆記</h2>
+
+<h3>結構</h3>
+
+<pre><code>.
+|-Module &amp; Instance
+|-Ports &amp; type
+|-Simple type
+    |-types
+    |-assign
+    |-always block
+|-Sequential &amp; Combinational
+    |-blocking
+    |-non-blocking
+|-Condition &amp; Branch
+    |-case
+    |-if-else
+|-FSM
+    |-One-pulse
+        |-Moore
+        |-Mealy
+    |-Example: rrab
+|-Test bench
+    |-dump infos
+    |-test bench sample
+|-Tips
+</code></pre>
+
+<h3>Module &amp; Instance</h3>
+
+<p>Module 宣告方式</p>
+
+<pre><code>module moduleName (
+    //ports
+);
+//Code
+endmodule
+</code></pre>
+
+<p>Instance 宣告方式</p>
+
+<pre><code>moduleName instanceName(
+    //ports
+);
+</code></pre>
+
+<hr />
+
+<h3>Ports &amp; type</h3>
+
+<ul>
+<li>input, output</li>
+<li>reg</li>
+<li>vector</li>
+</ul>
+
+
+<pre><code>module moduleName(
+    output  reg     o_R0,   // output &amp; reg
+    output          o_R1,   // output
+    output  [3:0]   o_R2,   // output 4-bit vector
+    input   [3:0]   i_S0,   // input 4-bit vector
+    input           i_S1    // input
+);
+//code
+endmodule
+</code></pre>
+
+<hr />
+
+<h3>Simple types</h3>
+
+<h4>Warning: reg 不代表真的會合成個 reg 出來</h4>
+
+<ul>
+<li>wire, reg</li>
+<li>or, and, not, nor, nand...</li>
+<li>直接寫上常數，沒有給定 bit 時，預設會變成 32 bits</li>
+</ul>
+
+
+<h3>assign</h3>
+
+<p>當 RHS 有變化時，就會更新 LHS</p>
+
+<p>範例一、單純地給值</p>
+
+<pre><code>wire [3:0] const_12;
+assign const_12 = 4'd12;
+</code></pre>
+
+<p>範例二、基本運算</p>
+
+<pre><code>output [1:0] o_sum;
+input i_a, i_b;
+assign o_sum = i_a + i_b;
+</code></pre>
+
+<p>範例三、控制條件</p>
+
+<pre><code>output [1:0] o_sum;
+input reset_n, i_a, i_b;
+assign o_sum = (en) ? (i_a + i_b) : (2'b0);
+</code></pre>
+
+<p>範例四、串接</p>
+
+<pre><code>output o_carry_out, o_sum;
+input i_a, i_b;
+assign {o_carry_out, o_sum} = i_a + i_b;
+</code></pre>
+
+<hr />
+
+<h3>always block</h3>
+
+<p>以上的 assign 都可被換成 always block</p>
+
+<p>範例一、單純地給值</p>
+
+<pre><code>reg [3:0] const_12;
+always @(*) begin
+    const_12 = 4'd12;
+end
+</code></pre>
+
+<p>範例二、基本運算</p>
+
+<pre><code>output reg [1:0] o_sum;
+input i_a, i_b;
+always @(*) begin
+    o_sum = i_a + i_b;
+end
+</code></pre>
+
+<p>範例三、控制條件</p>
+
+<pre><code>output reg [1:0] o_sum;
+input reset_n, i_a, i_b;
+always @(*) begin
+    if (en) begin
+        o_sum = i_a + i_b;
+    end else begin
+        o_sum = 2'b0;
+    end
+end
+</code></pre>
+
+<p>範例四、串接</p>
+
+<pre><code>output reg o_carry_out, o_sum;
+input i_a, i_b;
+always @(*) begin
+    {o_carry_out, o_sum} = i_a + i_b;
+end
+</code></pre>
+
+<hr />
+
+<h3>Sequential &amp; Combinational</h3>
+
+<h4>Sequential</h4>
+
+<pre><code>always @(posedge clk or negedge reset_n) begin
+    if (!reset_n) begin
+        //Do something
+    end else begin
+        //Do something
+    end
+end
+</code></pre>
+
+<h4>Combinational</h4>
+
+<pre><code>always @(*) begin
+    //Do something
+end
+</code></pre>
+
+<p>在 sequential 的部分會放入 <code>clk</code> ，裡頭會使用 <code>&lt;=</code>
+在 combinational 的部分會放入需要注意的線路，不過可以用 <code>*</code> 取代，它會自動幫你處理好，裡頭使用 <code>=</code></p>
+
+<hr />
+
+<h3>Condition &amp; Branch</h3>
+
+<p>在寫判斷的時候，如果只利用 <code>assign</code> 來做的話，有可能在條件複雜的時候會很容易出錯。這時候可以利用 <code>always block</code> 來完成。</p>
+
+<pre><code>assign next = (i_s == 2'b00) ? (2'd0) :
+                     (i_s == 2'b01) ? (2'd1) :
+                     (i_s == 2'b10) ? (2'd2) :
+                     (2'd3);
+</code></pre>
+
+<p>變成</p>
+
+<pre><code>always @(*) begin
+    case (i_s)
+        2'b00: begin
+            next = 2'd0;
+        end
+        2'b01: begin
+            next = 2'd1;
+        end
+        2'b10: begin
+            next = 2'd2;
+        end
+        2'b11: begin
+            next = 2'd3;
+        end
+    endcase
+end
+</code></pre>
+
+<p>如果有條件判斷，記得要寫滿或補上預設的狀態，所以的接線都應該出現在每個 <code>begin-end</code> 裡頭，如下：</p>
+
+<pre><code>always @(*) begin
+    if (i_s == 2'b00) begin
+        a = 2'b00;
+        b = 2'b01;
+    end else if (i_s == 2'b10) begin
+        a = 2'b10;
+        b = 2'b11;
+    end else begin
+        a = 2'b01;
+        b = 2'b11;
+    end
+end
+</code></pre>
+
+<p>只是這樣寫有時候會多寫很多行，比如說 <code>b = 2'b11</code> 各自出現兩次，可以換成下面的寫法，他們是等價的：</p>
+
+<pre><code>always @(*) begin
+    b = 2'b11;
+    if (i_s == 2'b00) begin
+        a = 2'b00;
+        b = 2'b01;
+    end else if (i_s == 2'b10) begin
+        a = 2'b10;
+    end else begin
+        a = 2'b01;
+    end
+end
+</code></pre>
+
+<hr />
+
+<h3>FSM</h3>
+
+<h4>One-pulse</h4>
+
+<h5>Moore</h5>
+
+<p>以下圖為例，因為要把 <code>output</code> 畫進去小圈圈有點塞不下，所以直接指明：</p>
+
+<pre><code>IDLE: 1'b0;
+S0: 1'b1;
+S1: 1'b0;
+</code></pre>
+
+<p><img src="http://m101.nthu.edu.tw/~s101062124/moore-one-pulse.png" alt="Moore-one-pulse" /></p>
+
+<pre><code>module mooreFSM (
+    output  reg o_d,
+    input       i_d,
+    input       clk,
+    input       reset_n
+);
+parameter   IDLE    =   2'b00;
+parameter   S0      =   2'b01;
+parameter   S1      =   2'b10;
+// inner state/next_state
+reg [1:0] state, next_state;
+//state
+always @(posedge clk or negedge reset_n) begin
+    if (!reset_n) begin
+        state   &lt;=  IDLE;
+    end else begin
+        state   &lt;=  next_state;
+    end
+end
+//next_state
+always @(*) begin
+    case (state)
+        IDLE: begin
+            if (i_d == 1'b1) begin
+                next_state = S0;
+            end else begin
+                next_state = IDLE;
+            end
+        end
+        S0: begin
+            if (i_d == 1'b1) begin
+                next_state = S1;
+            end else begin
+                next_state = IDLE;
+            end
+        end
+        S1: begin
+            if (i_d == 1'b1) begin
+                next_state = S1;
+            end else begin
+                next_state = IDLE;
+            end
+        end
+        default:    begin
+            next_state = IDLE;
+        end
+    endcase
+end
+//output
+always @(*) begin
+    o_d = 1'b0;
+    case (state)
+        S0: begin
+            o_d = 1'b1;
+        end
+    endcase
+end
+endmodule
+</code></pre>
+
+<h5>Mealy</h5>
+
+<p>以下圖為例：
+<img src="http://m101.nthu.edu.tw/~s101062124/mealy-one-pulse.png" alt="Mealy-one-pulse" /></p>
+
+<pre><code>module mealyFSM (
+    output  reg o_d,
+    input       i_d,
+    input       clk,
+    input       reset_n
+);
+parameter   IDLE    =   2'b00;
+parameter   S0      =   2'b01;
+// inner state/next_state
+reg [1:0] state, next_state;
+reg o_d_next;
+//state
+always @(posedge clk or negedge reset_n) begin
+    if (!reset_n) begin
+        state   &lt;=  IDLE;
+    end else begin
+        state   &lt;=  next_state;
+    end
+end
+//output
+always @(*) begin
+    o_d_next = 1'b0;
+    case (state)
+        IDLE: begin
+            if (i_d == 1'b1) begin
+                o_d_next = 1'b1;
+            end
+        end
+    endcase
+end
+//next_state
+always @(*) begin
+    next_state = IDLE;
+    case (state)
+        IDLE: begin
+            if (i_d == 1'b1) begin
+                next_state = S0;
+            end
+        end
+        S0: begin
+            if (i_d == 1'b1) begin
+                next_state = S0;
+            end
+        end
+    endcase
+end
+// D-FF stores output
+always @(posedge clk or negedge reset_n) begin
+    if (!reset_n) begin
+        o_d &lt;= 1'b0;
+    end else begin
+        o_d &lt;= o_d_next;
+    end
+end
+endmodule
+</code></pre>
+
+<h4>rrab</h4>
+
+<pre><code>/*
+request 給定 2'b00, 2'b01, 2'b10 的時候會丟回 2'b00, 2'b01, 2'b10
+
+如果 request 給的是 2'b11 則會根據之前的狀態做改變
+如果之前是 2'b00, 2'b01 -&gt; 2'b10
+如果之前是 2'b10-&gt;2'b01
+
+假設 request 的那兩個 bit 代表的是工作的話
+1st bit -&gt; job1
+2ed bit -&gt; job2
+2'b00-&gt;沒有任何工作
+2'b01-&gt;job1 來了
+2'b10-&gt;job2 來了
+2'b11-&gt;job1, job2 同時來了
+所以兩個人輪流做就是 2'b01&lt;-&gt;2'b10 這樣
+*/
+module rrab (
+    output reg [1:0] grant,
+    input [1:0] request,
+    input clk,
+    input reset_n
+);
+    parameter S0 = 2'b00;
+    parameter S1 = 2'b01;
+    parameter S2 = 2'b10;
+    parameter S3 = 2'b11;
+
+
+    reg [1:0] grant_i;
+    reg last_winner, winner;
+
+    always @(posedge clk or negedge reset_n) begin
+        if (!reset_n) begin
+            last_winner &lt;= 1'b0;
+            grant       &lt;= S0;
+        end else begin
+            last_winner &lt;= winner;
+            grant       &lt;= grant_i;
+        end
+    end
+
+    always @(*) begin
+        case(request)
+            S0: begin
+                grant_i = S0;
+            end
+            S1: begin
+                grant_i = S1;
+            end
+            S2: begin
+                grant_i = S2;
+            end
+            S3: begin
+                if (last_winner == 1'b0) begin
+                    grant_i = S2;
+                end else begin
+                    grant_i = S1;
+                end
+            end
+        endcase
+    end
+
+    always @(*) begin
+        if (grant_i == S0) begin
+            winner = last_winner;
+        end else begin
+            winner = grant_i[1];
+        end
+    end
+endmodule
+</code></pre>
+
+<hr />
+
+<h3>Test bench</h3>
+
+<h4>dump infos</h4>
+
+<pre><code>$monitor(...);
+//當 ... 裏面的值有變動時就會印出
+$display(...);
+//不管 ... 裡面的值有沒有變動都會印出
+//用法和 printf 很類似
+</code></pre>
+
+<h4>Test bench 大概寫法</h4>
+
+<pre><code>module test;
+// 因為 input 的值在這裡要給，所以用 reg
+reg i_data, clk, reset_n;
+// output 則是由 instance 傳出來，用 wire 即可
+wire o_data;
+
+initial begin
+    //do something
+    $finish;
+end
+
+always begin
+    #5 clk = ~clk;
+    // delay 5 units 以後 toggle
+end
+endmodule
+</code></pre>
+
+<hr />
+
+<h3>Tips</h3>
+
+<p>就是以前踩過的雷ＯＴＺ</p>
+
+<h4>ARS</h4>
+
+<p><code>&gt;&gt;&gt;</code> 是 <code>arithmetic right shift</code> 在 Verilog 裡的運算符號，功能如下：</p>
+
+<pre><code>4-bit: 0111 &gt;&gt;&gt; 1 = 0011
+4-bit: 1100 &gt;&gt;&gt; 1 = 1110
+</code></pre>
+
+<p>所以很直覺的就拿來用的後果卻是變成這樣：</p>
+
+<pre><code>4-bit: 0111 &gt;&gt;&gt; 1 = 0011
+4-bit: 1100 &gt;&gt;&gt; 1 = 0110
+</code></pre>
+
+<p>因為要被算的數沒有指定為 <code>signed</code>，所以被當成 <code>unsigned</code> 處理</p>
+
+<p>對於 <code>unsigned</code> 的數就直接用單純的 logic shift（<code>&gt;&gt;</code>）來算
+因此答案就不會是我們原本想的那樣了。</p>
+
+<p>如果想要讓他以原本的想法動的話，要改成</p>
+
+<pre><code>$signed(1100) &gt;&gt;&gt; 1 = 1110;
+</code></pre>
+
+<h4>number???</h4>
+
+<p>有時候總會需要給一些常數，或是加減某些常數的時候，在這樣的情況下有機會寫成：</p>
+
+<pre><code>a = b + 1;
+</code></pre>
+
+<p>因為編譯器不知道你的 <code>1</code> 的長度是多少，預設會是 <code>32-bit</code> 的數字。所以在某些時候會因為這個位數的問題發生悲劇。</p>
+
+<h4>latch...</h4>
+
+<p>只要不小心， latch 會死命的追著人跑ＯＴＺ</p>
+
+<p><code>case</code> 或是 <code>if-else</code> 沒寫完整，因為編譯器不知道你的用途，也沒辦法就這樣空白著，只好幫你弄一個 <code>latch</code> 出來。</p>
+
+<p>另外，把自己接到自己身上也會發生 <code>latch</code> 。</p>
+
+<h4>bits???</h4>
+
+<p>bit 的數目一定要對好，一定要對好，一定要對好。</p>
+
+<p>該開到 4 bits 的，就應該要確定真的有寫出 4 bits 。</p>
+
+<p>個人慘痛經驗是宣告變數的時候把 3 bits 的變數宣告成 4 bits 這樣其實還好，更可怕的是同時也把 4 bits 宣告成 3bits 了......</p>
+
+<p>如果不夠注意的話，就很容易變成潛在的 bug（這東西花了三個小時的抓蟲時間OTZ）</p>
+
+<hr />
+
+<h5>最後更新：hydai@6/7</h5>
+<h5><a href="VerilogNote.pdf">PDF下載</a></h5>
+</body>
+</html>
